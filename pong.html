@@ -1,0 +1,37 @@
+
+<!-- saved from url=(0064)https://www.developper-jeux-video.com/download/pong/A8/pong.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body>
+ 
+<script src="./pong_files/game.js.téléchargement"></script>
+<script src="./pong_files/game.display.js.téléchargement"></script>
+<script src="./pong_files/game.keycode.js.téléchargement"></script>
+<script src="./pong_files/game.control.js.téléchargement"></script>
+<script src="./pong_files/game.ai.js.téléchargement"></script>
+<script>
+(function () {
+  // dÃ©but du code isolÃ©
+  var requestAnimId;
+    
+  var initialisation = function() {
+    // le code de l'initialisation
+    game.init();
+    requestAnimId = window.requestAnimationFrame(main); // premier appel de principale au rafraichissement de la page
+  }
+    
+  var main = function() {
+    // le code du jeu
+    game.clearLayer(game.playersBallLayer);
+    game.movePlayers();
+    game.displayPlayers();
+    game.moveBall();
+    game.ai.move();
+	game.collideBallWithPlayersAndAction();
+    requestAnimId = window.requestAnimationFrame(main); // rappel de main au prochain rafraichissement de la page
+  }
+    
+  window.onload = initialisation; // appel de la fonction initialisation au chargement de la page
+    
+  // fin du code isolÃ©
+})();
+</script> 
+<canvas id="terrain" width="700" height="400" style="background: rgb(0, 0, 0); z-index: 0; position: absolute; left: 0px; top: 0px;"></canvas><canvas id="score" width="700" height="400" style="z-index: 1; position: absolute; left: 0px; top: 0px;"></canvas><canvas id="joueursetballe" width="700" height="400" style="z-index: 2; position: absolute; left: 0px; top: 0px;"></canvas></body></html>
